@@ -248,8 +248,11 @@
 
                                 if (window.localStorage && localStorage.getItem("recent-comments-" + widget.coll_id)) {
                                     widget.all_comments = JSON.parse(localStorage.getItem("recent-comments-" + widget.coll_id));
-                                    widget.spinner.destroy();
-
+                                    try{
+                                    widget.spinner.destroy(); }
+                                    catch( error) { 
+                                        console.log(error) 
+                                    }
                                     if (widget.all_comments.length > widget.max_comments) {
                                         widget.all_comments = widget.all_comments.slice(0, widget.max_comments);
                                     }
